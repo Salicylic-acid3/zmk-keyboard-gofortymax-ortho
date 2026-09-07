@@ -46,5 +46,10 @@ manifest:
     - name: zmk-feature-default-layer
       revision: codex/custom-rpc-rewrite
       import: true
+    # --- Custom Studio Protocol: macro & combo runtime editing ---
+    - name: zmk-feature-runtime-macro
+      import: true
+    - name: zmk-feature-runtime-combo
+      import: true
   self:
     path: config
