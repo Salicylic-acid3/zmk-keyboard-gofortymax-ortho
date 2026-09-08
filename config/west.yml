@@ -51,5 +51,12 @@ manifest:
       import: true
     - name: zmk-feature-runtime-combo
       import: true
+    # --- Custom Studio Protocol: diagnostics & device settings ---
+    # (Keeb-On! Studio's Troubleshooting and Settings tabs.)
+    - name: zmk-feature-device-info
+    - name: zmk-feature-watchdog
+    - name: zmk-feature-kscan-diagnostics
+    - name: zmk-feature-input-stream
+    - name: zmk-module-settings-rpc
   self:
     path: config
