@@ -3,4 +3,16 @@ if SHIELD_GOFORTY_MAX
 config ZMK_KEYBOARD_NAME
     default "goforty-max"
 
+config USB_DEVICE_VID
+    default 0x355D
+
+config USB_DEVICE_PID
+    default 0x1029
+
+config USB_DEVICE_MANUFACTURER
+    default "Keeb-On!"
+
+config USB_DEVICE_PRODUCT
+    default "GoFortyMax Ortho"
+
 endif
