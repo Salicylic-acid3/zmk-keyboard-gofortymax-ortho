@@ -4,3 +4,41 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
+
+  # Pushing a tag publishes the built .uf2 files as a GitHub Release.
+  #
+  # Keeb-On! Studio links to firmware with
+  # /releases/latest/download/<name>.uf2, which is a stable permalink that
+  # needs no login and always points at the newest release. Actions artifacts
+  # cannot be used for that: they require a signed-in GitHub account and they
+  # expire.
+  #
+  # Asset names come straight from the `artifact-name` values in build.yaml
+  # (upstream only appends "-zmk" when artifact-name is absent), so they stay
+  # identical release to release and the permalinks keep working.
+  release:
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download the built firmware
+        uses: actions/download-artifact@v4
+        with:
+          name: firmware
+          path: firmware
+
+      - name: List what will be published
+        run: ls -l firmware
+
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Idempotent so a re-run of a failed release job doesn't error out.
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" firmware/*.uf2 --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" firmware/*.uf2 --generate-notes
+          fi
