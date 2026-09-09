@@ -35,6 +35,10 @@ jobs:
       - name: Publish the release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # This job never checks the repository out -- it only needs the
+          # built artifact -- so gh has no git remote to infer the repository
+          # from. Naming it here is cheaper than adding a checkout step.
+          GH_REPO: ${{ github.repository }}
         run: |
           # Idempotent so a re-run of a failed release job doesn't error out.
           if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
