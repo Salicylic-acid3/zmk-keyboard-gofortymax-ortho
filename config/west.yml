@@ -58,5 +58,9 @@ manifest:
     - name: zmk-feature-kscan-diagnostics
     - name: zmk-feature-input-stream
     - name: zmk-module-settings-rpc
+    # --- Custom Studio Protocol: keymap fast load ---
+    # 読み取り専用。BLE越しのキーマップ読み込みを速くするだけで、
+    # 書き込み(編集・保存)は従来どおり公式プロトコルを通る。
+    - name: zmk-feature-fast-keymap
   self:
     path: config
