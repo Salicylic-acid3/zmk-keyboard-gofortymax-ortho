@@ -1,6 +1,7 @@
 #include <behaviors.dtsi>
 #include <behaviors/runtime_macro.dtsi>
 #include <dt-bindings/zmk/bt.h>
+#include <behaviors/runtime_tap_dance.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
 / {

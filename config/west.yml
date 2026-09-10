@@ -8,6 +8,8 @@ manifest:
       url-base: https://github.com/cormoran
     - name: sekigon-gonnoc
       url-base: https://github.com/sekigon-gonnoc
+    - name: salicylic-acid3
+      url-base: https://github.com/Salicylic-acid3
   projects:
     - name: zmk
       import: app/west.yml
@@ -51,6 +53,12 @@ manifest:
       import: true
     - name: zmk-feature-runtime-combo
       import: true
+    # --- Custom Studio Protocol: tap dance runtime editing ---
+    # 30%キーボードでキーを取り戻すための機能。タップ回数ごとの割り当てを
+    # settings に置いてあるので、アプリから再ビルドなしで変えられる。
+    - name: zmk-feature-runtime-tap-dance
+      remote: salicylic-acid3
+      revision: master
     # --- Custom Studio Protocol: diagnostics & device settings ---
     # (Keeb-On! Studio's Troubleshooting and Settings tabs.)
     - name: zmk-feature-device-info
