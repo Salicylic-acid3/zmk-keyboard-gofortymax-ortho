@@ -78,15 +78,36 @@
         compatible = "zmk,keymap";
 
         default_layer {
+            display-name = "Base";
             // Layer 0: o51go の Remap キーマップと同一構成(BTキー2個の追加のみ)
 
             bindings = <
-&bt BT_PRV  &bt BT_NXT  &kp TAB  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp LBRC  &kp Y  &kp U  &kp I  &kp O  &kp P  &kp DEL  &kp LCTRL  &kp A  &kp S  &kp D  &kp F  &kp G  &kp SEMI  &kp H  &kp J  &kp K  &kp L  &kp MINUS  &kp RET  &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp MINUS  &kp N  &kp M  &kp COMMA  &kp DOT  &kp UP  &lt_mid 1 INT_RO  &kp LANG1  &mt_mid LGUI LANG2  &kp LALT  &mt_mid LEFT_WIN INT_MUHENKAN  &lt_mid 2 RET  &kp BSPC  &kp DELETE  &lt_mid 1 SPACE  &mt_mid LALT INT_HENKAN  &kp LEFT  &kp DOWN  &kp RIGHT
+&bt BT_PRV  &bt BT_NXT  &kp TAB  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp LBRC  &kp Y  &kp U  &kp I  &kp O  &kp P  &kp DEL  &kp LCTRL  &kp A  &kp S  &kp D  &kp F  &kp G  &kp SEMI  &kp H  &kp J  &kp K  &kp L  &kp MINUS  &kp RET  &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp MINUS  &kp N  &kp M  &kp COMMA  &kp DOT  &kp UP  &lt_mid 2 INT_RO  &kp LANG1  &mt_mid LGUI LANG2  &kp LALT  &mt_mid LEFT_WIN INT_MUHENKAN  &lt_mid 3 RET  &kp BSPC  &kp DELETE  &lt_mid 2 SPACE  &mt_mid LALT INT_HENKAN  &kp LEFT  &kp DOWN  &kp RIGHT
             >;
         };
 
-        layer1 {
-            // Layer 1: 空。先頭キーだけ &studio_unlock (ZMK Studioでの編集を許可するため)。
+        alt_base_layer {
+            display-name = "Alt Base";
+            // Layer 1: もう一方のOS用のベース。OS検出がデフォルトレイヤーを
+            // 0 と 1 で切り替える (CONFIG_ZMK_DEFAULT_LAYER_OS_DETECTION)。
+            //
+            // ここが「デフォルトレイヤー」になったときは、これより下の
+            // レイヤーは参照されない: zmk_keymap_position_state_changed() の
+            // 走査はデフォルトレイヤーで止まる。つまり &trans のままだと
+            // 切り替えた瞬間に全キーが無反応になる。
+            // Keeb-On! Studio の「Baseからコピー」で埋めてから使うこと。
+            //
+            // 位置は 1 でなければならない。&lt_mid で押さえるレイヤーは
+            // デフォルトより上(番号が大きい)である必要があるため、
+            // ここに割り込ませて既存のレイヤーを1つずつ繰り下げてある。
+
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        layer2 {
+            // Layer 2: 空。先頭キーだけ &studio_unlock (ZMK Studioでの編集を許可するため)。
             // それ以外の機能はビルド後にZMK Studioから自由に割り当てる。
 
             bindings = <
@@ -94,16 +115,16 @@
             >;
         };
 
-        layer2 {
-            // Layer 2: 空。ZMK Studioから割り当てる。
+        layer3 {
+            // Layer 3: 空。ZMK Studioから割り当てる。
 
             bindings = <
 &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
             >;
         };
 
-        layer3 {
-            // Layer 3: 空。ZMK Studioから割り当てる。
+        layer4 {
+            // Layer 4: 空。ZMK Studioから割り当てる。
 
             bindings = <
 &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
