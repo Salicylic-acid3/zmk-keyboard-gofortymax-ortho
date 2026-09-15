@@ -10,24 +10,31 @@
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "col2row";
-        row-gpios = <&akdk_d 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
-            <&akdk_d 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
-            <&akdk_d 13(GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
-            <&akdk_d 12(GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
-            <&akdk_d 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
-        col-gpios = <&akdk_d 17 (GPIO_ACTIVE_HIGH)>,
-            <&akdk_d 16 (GPIO_ACTIVE_HIGH)>,
-            <&akdk_d 15 (GPIO_ACTIVE_HIGH)>,
-            <&akdk_d 10 (GPIO_ACTIVE_HIGH)>,
-            <&akdk_d 9 (GPIO_ACTIVE_HIGH)>,
-            <&akdk_d 8 (GPIO_ACTIVE_HIGH)>,
-            <&akdk_d 7 (GPIO_ACTIVE_HIGH)>,
-            <&akdk_d 6 (GPIO_ACTIVE_HIGH)>,
-            <&akdk_d 5 (GPIO_ACTIVE_HIGH)>,
-            <&akdk_d 4 (GPIO_ACTIVE_HIGH)>,
-            <&akdk_d 3 (GPIO_ACTIVE_HIGH)>,
-            <&akdk_d 2 (GPIO_ACTIVE_HIGH)>,
-            <&akdk_d 1 (GPIO_ACTIVE_HIGH)>;
+        /* J1(20 ピン)の番号 = acdb の D 番号。回路図の名前は歴史的経緯で
+           ずれていて、一番上の行(EX1 / EX2 の 2 キー)が回路図の ROW4(pin 18)、
+           以下は上から順に ROW0、ROW1、ROW2、ROW3。
+           初代の基板は ROW0..3 = pin 14, 13, 12, 11、COL2 = pin 15 だった。
+           今の基板は ROW0..3 = pin 15, 14, 13, 12、COL2 = pin 11 と、
+           ROW0 と COL2 の位置が入れ替わっている。他は同じ:
+           COL0 = 17、COL1 = 16、COL3 = 10 … COL12 = 1。 */
+        row-gpios = <&akdk_d 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* 回路図 ROW4: EX1 / EX2 */
+            <&akdk_d 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* ROW0 */
+            <&akdk_d 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* ROW1 */
+            <&akdk_d 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* ROW2 */
+            <&akdk_d 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;  /* ROW3 */
+        col-gpios = <&akdk_d 17 (GPIO_ACTIVE_HIGH)>,  /* COL0 */
+            <&akdk_d 16 (GPIO_ACTIVE_HIGH)>,  /* COL1 */
+            <&akdk_d 11 (GPIO_ACTIVE_HIGH)>,  /* COL2 */
+            <&akdk_d 10 (GPIO_ACTIVE_HIGH)>,  /* COL3 */
+            <&akdk_d 9 (GPIO_ACTIVE_HIGH)>,   /* COL4 */
+            <&akdk_d 8 (GPIO_ACTIVE_HIGH)>,   /* COL5 */
+            <&akdk_d 7 (GPIO_ACTIVE_HIGH)>,   /* COL6 */
+            <&akdk_d 6 (GPIO_ACTIVE_HIGH)>,   /* COL7 */
+            <&akdk_d 5 (GPIO_ACTIVE_HIGH)>,   /* COL8 */
+            <&akdk_d 4 (GPIO_ACTIVE_HIGH)>,   /* COL9 */
+            <&akdk_d 3 (GPIO_ACTIVE_HIGH)>,   /* COL10 */
+            <&akdk_d 2 (GPIO_ACTIVE_HIGH)>,   /* COL11 */
+            <&akdk_d 1 (GPIO_ACTIVE_HIGH)>;   /* COL12 */
     };
 
     default_transform: keymap_transform {
