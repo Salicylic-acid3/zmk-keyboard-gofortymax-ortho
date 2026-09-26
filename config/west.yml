@@ -59,7 +59,7 @@ manifest:
     - name: zmk-feature-runtime-tap-dance
       remote: salicylic-acid3
       # branch: master
-      revision: 5fdf0a701562acbd69810018b5962f455be9629e
+      revision: 1961a0b36ebc8f2c46f904afd53533ce5b75db8a
     # --- Custom Studio Protocol: diagnostics & device settings ---
     # (Keeb-On! Studio's Troubleshooting and Settings tabs.)
     - name: zmk-feature-device-info
