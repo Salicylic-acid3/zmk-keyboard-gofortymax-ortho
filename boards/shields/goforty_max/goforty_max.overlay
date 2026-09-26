@@ -1,1 +1,19 @@
 #include "goforty_max.dtsi"
+
+/* 電池の測定先を VDD(電源ライン)に変える。
+ *
+ * acdb ボードは `io-channels = <&adc 2>` = AIN2 = P0.04 を指しているが、P0.04 は
+ * このボードのどこにも繋がっていない。何も無いピンを読むので残量は常に 0% 付近で、
+ * 「電池残量 0」の通知が出続けていた。ErgoTrack で同じ症状を直したのと同じ対処
+ * (ErgoTrack 3aa03d5 "Measure the rail, not a pin with nothing on it")。
+ *
+ * モジュールは io-channels の数値を `NRF_SAADC_AIN0 + n` として入力の選択にだけ
+ * 使う。nRF52840 の PSELP は AIN0=1..AIN7=8, VDD=9 なので n=8 で VDD になる。
+ * 単4 x2 直列が電源に直結なら VDD = 電池電圧で、分圧抵抗も配線の追加も要らない。
+ *
+ * USB 給電中は VDD がレギュレータから来るので、電池に関係なく 100% 付近を指す。
+ * 残量として意味があるのは電池駆動のときだけ。
+ */
+&vbatt {
+    io-channels = <&adc 8>;
+};
