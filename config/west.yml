@@ -11,10 +11,14 @@ manifest:
     - name: salicylic-acid3
       url-base: https://github.com/Salicylic-acid3
   projects:
+    # ZMK: Salicylic-acid3 fork = cormoran main+dya + Studio notifications
+    #   that never wait forever for the host (branch main+dya+rpc-nonblocking).
+    #   Move to the fork's new SHA after rebasing it onto cormoran's branch.
     - name: zmk
+      remote: salicylic-acid3
       import: app/west.yml
       clone-depth: 1
-      revision: main+dya
+      revision: b93e147345214d416ba4c28f3b025f0c0fb46494
     # Required by cormoran/zmk#main+dya: matching patched Zephyr.
     - name: zephyr
       revision: v4.1.0+zmk-fixes+nrf-half-duplex-uart
@@ -63,7 +67,11 @@ manifest:
     # --- Custom Studio Protocol: diagnostics & device settings ---
     # (Keeb-On! Studio's Troubleshooting and Settings tabs.)
     - name: zmk-feature-device-info
+    # Watchdog: Salicylic-acid3 fork = cormoran main + freeze incidents that
+    #   record where the frozen thread was stuck (branch main).
     - name: zmk-feature-watchdog
+      remote: salicylic-acid3
+      revision: c6d20492ebc7c6e97acdc1ed2262fc647ad8a65c
     - name: zmk-feature-kscan-diagnostics
     - name: zmk-feature-input-stream
     - name: zmk-module-settings-rpc
