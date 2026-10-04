@@ -46,7 +46,14 @@ manifest:
       remote: sekigon-gonnoc
       revision: main
     # --- Custom Studio Protocol: connection management ---
+    # custom-settings: Salicylic-acid3 fork = cormoran main + a fix so that
+    #   saving a subsystem also saves an array that was emptied in memory
+    #   (removing the last tap of a tap dance used to come back on reboot),
+    #   and discard restores an array's length. Offer upstream; follow
+    #   cormoran again once merged.
     - name: zmk-feature-custom-settings
+      remote: salicylic-acid3
+      revision: 5f97726353e430efc3cbcda0c40677031126d2ec
     - name: zmk-module-ble-management
     - name: zmk-feature-os-detection
     - name: zmk-feature-default-layer
