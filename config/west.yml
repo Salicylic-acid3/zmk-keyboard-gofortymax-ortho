@@ -79,6 +79,13 @@ manifest:
     - name: zmk-feature-watchdog
       remote: salicylic-acid3
       revision: c6d20492ebc7c6e97acdc1ed2262fc647ad8a65c
+    # 電池残量をアプリへ。ZMK本体はBLEのBattery Service経由でしか出さないので、
+    # USB接続だと見えない。USB給電中はセンサがUSBの電圧を読むので、モジュールは
+    # 電池駆動だった最後の値を保持して出す(central_on_usb フラグ付き)。
+    - name: zmk-feature-battery-report
+      remote: salicylic-acid3
+      # branch: master
+      revision: aecfe5eca3688b6b97faaf54df03a01a5159ab9d
     - name: zmk-feature-kscan-diagnostics
     - name: zmk-feature-input-stream
     - name: zmk-module-settings-rpc
