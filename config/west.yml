@@ -53,7 +53,7 @@ manifest:
     #   cormoran again once merged.
     - name: zmk-feature-custom-settings
       remote: salicylic-acid3
-      revision: 5f97726353e430efc3cbcda0c40677031126d2ec
+      revision: 61f2b6af4202811512886a3478d972abab45e409
     - name: zmk-module-ble-management
     - name: zmk-feature-os-detection
     - name: zmk-feature-default-layer
