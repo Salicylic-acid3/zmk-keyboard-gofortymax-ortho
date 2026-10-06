@@ -86,14 +86,24 @@ zephyr_udc0: &usbd {
             reg = <0x00000000 0x00027000>;
         };
 
+        /* 32 KB were given back to settings (below): the largest image built
+         * for this board is about 540 KB, against 676 KB here. */
         code_partition: partition@27000 {
             label = "code_partition";
-            reg = <0x00027000 0x000b1000>;
+            reg = <0x00027000 0x000a9000>;
         };
 
-        storage_partition: partition@d8000 {
+        /* 64 KB. The 32 KB this started with ran out on ClickBoard ErgoTrack:
+         * three layers of keymap, the bonds, sixty-odd trackpad settings, two
+         * ripple maps and the macro, combo and tap-dance slots filled NVS,
+         * after which every new save was silently refused -- a setting that
+         * took effect until the next reboot and then came back as it was.
+         * CONFIG_SETTINGS_NVS_SECTOR_COUNT (acdb_defconfig) must cover the
+         * whole partition or the extra space goes unused. Changing this moves
+         * the settings area, so a build with it needs a settings reset. */
+        storage_partition: partition@d0000 {
             label = "storage";
-            reg = <0x000d8000 0x00008000>;
+            reg = <0x000d0000 0x00010000>;
         };
 
         boot_partition: partition@e0000 {

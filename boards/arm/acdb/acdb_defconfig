@@ -10,6 +10,9 @@ CONFIG_BUILD_OUTPUT_UF2=y
 CONFIG_MPU_ALLOW_FLASH_WRITE=y
 CONFIG_NVS=y
 CONFIG_SETTINGS_NVS=y
+# 16 sectors x 4 KB = the whole 64 KB storage partition (acdb.dts). The default
+# of 8 would leave half of it unused.
+CONFIG_SETTINGS_NVS_SECTOR_COUNT=16
 CONFIG_FLASH=y
 CONFIG_FLASH_PAGE_LAYOUT=y
 CONFIG_FLASH_MAP=y
