@@ -9,6 +9,7 @@
 
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
+        wakeup-source;
         diode-direction = "col2row";
         /* J1(20 ピン)の番号 = acdb の D 番号。回路図の名前は歴史的経緯で
            ずれていて、一番上の行(EX1 / EX2 の 2 キー)が回路図の ROW4(pin 18)、
