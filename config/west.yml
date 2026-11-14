@@ -53,7 +53,11 @@ manifest:
     #   cormoran again once merged.
     - name: zmk-feature-custom-settings
       remote: salicylic-acid3
-      revision: a320d60130517b4252810d319e8a02587cbdc279
+      # 2007ea9: storage-name buffers as long as the settings backend allows.
+      #   ".../tap_dance0/holds/_size" is 64 characters, one too many for the
+      #   old 64-byte buffers, so saving a tap dance failed ("Failed to
+      #   process request") and its hold actions were never stored.
+      revision: 2007ea9f4d63fbb4662c60fb69b1e06ba48ff0fc
     - name: zmk-module-ble-management
     - name: zmk-feature-os-detection
     - name: zmk-feature-default-layer
