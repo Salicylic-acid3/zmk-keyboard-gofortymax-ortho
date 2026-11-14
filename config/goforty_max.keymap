@@ -73,6 +73,40 @@
             bindings = <&mo>, <&kp>;
             display-name = "Layer-Tap 280ms";
         };
+
+        /* --- QMK の PERMISSIVE_HOLD 相当 ---
+           QMK の PERMISSIVE_HOLD は「押している間に別のキーが押されて
+           *離された* なら、TAPPING_TERM を待たずにホールドと決める」。
+           ZMK ではこれが flavor = "balanced"。上の hold-preferred は
+           QMK でいう HOLD_ON_OTHER_KEY_PRESS(別キーが押された時点で
+           ホールド確定)で、もっと強い。tap-preferred はその逆側。
+
+           時間は QMK 側で使っていた TAPPING_TERM 180 に合わせてある。
+
+           QUICK_TAP_TERM 0 に相当する設定は書いていない。ZMK の
+           quick-tap-ms は既定が -1 = 無効で、これが QMK の 0 と同じ意味。
+           値を書くとむしろ有効になってしまう。
+
+           ClickBoard ErgoTrack と同じ 2 つ。名前(display-name)も同じに
+           してある: Keeb-On! Studio は末尾の「<数値>ms」と括弧の中身で
+           プリセットを見分ける。 */
+        mt_perm: mod_tap_perm {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <180>;
+            bindings = <&kp>, <&kp>;
+            display-name = "Mod-Tap 180ms (Permissive)";
+        };
+
+        lt_perm: layer_tap_perm {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <180>;
+            bindings = <&mo>, <&kp>;
+            display-name = "Layer-Tap 180ms (Permissive)";
+        };
     };
 
     keymap {
