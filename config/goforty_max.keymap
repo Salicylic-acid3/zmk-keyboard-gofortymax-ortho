@@ -167,5 +167,21 @@
 &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
             >;
         };
+
+        /* Keeb-On! Studio から足せる空きレイヤー枠。基本 5 + 予備 11 = 16 層
+         * (ClickBoard ErgoTrack と同じ上限)。予備は書き換えたぶんだけ保存領域を
+         * 使うので、たくさん使うときはアプリの「設定の保存領域」を見る。
+         * ZMK の上限は 32(レイヤー状態が 32 ビット)。 */
+        extra1 { status = "reserved"; };
+        extra2 { status = "reserved"; };
+        extra3 { status = "reserved"; };
+        extra4 { status = "reserved"; };
+        extra5 { status = "reserved"; };
+        extra6 { status = "reserved"; };
+        extra7 { status = "reserved"; };
+        extra8 { status = "reserved"; };
+        extra9 { status = "reserved"; };
+        extra10 { status = "reserved"; };
+        extra11 { status = "reserved"; };
     };
 };
