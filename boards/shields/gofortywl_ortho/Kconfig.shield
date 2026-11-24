@@ -1,0 +1,2 @@
+config SHIELD_GOFORTYWL_ORTHO
+    def_bool $(shields_list_contains,gofortywl_ortho)

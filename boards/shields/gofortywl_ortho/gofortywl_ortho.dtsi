@@ -1,5 +1,5 @@
 #include <dt-bindings/zmk/matrix_transform.h>
-#include "goforty_max-layouts.dtsi"
+#include "gofortywl_ortho-layouts.dtsi"
 
 / {
     chosen {

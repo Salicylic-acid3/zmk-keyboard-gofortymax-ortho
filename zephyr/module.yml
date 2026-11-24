@@ -1,4 +1,4 @@
-name: goforty_max
+name: gofortywl_ortho
 build:
   settings:
     board_root: .
