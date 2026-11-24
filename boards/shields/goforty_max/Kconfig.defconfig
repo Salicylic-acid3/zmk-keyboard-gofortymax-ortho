@@ -1,9 +1,0 @@
-if SHIELD_GOFORTY_MAX
-
-config ZMK_KEYBOARD_NAME
-    default "goforty-max"
-
-# USB の識別子(VID/PID/製造者/製品名)はここには書かない。default は ZMK 自身の
-# 既定値に先を越されて一度も効かない。goforty_max.conf を見ること。
-
-endif

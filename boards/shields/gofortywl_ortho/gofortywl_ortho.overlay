@@ -1,4 +1,4 @@
-#include "goforty_max.dtsi"
+#include "gofortywl_ortho.dtsi"
 
 /* 電池の測定先を VDD(電源ライン)に変える。
  *

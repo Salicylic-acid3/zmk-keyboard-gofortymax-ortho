@@ -1,6 +1,6 @@
 file_format: "1"
-id: goforty_max
-name: goforty-max
+id: gofortywl_ortho
+name: GoFortyWL Ortho
 type: shield
 features:
   - keys
