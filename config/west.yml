@@ -89,7 +89,7 @@ manifest:
     - name: zmk-feature-battery-report
       remote: salicylic-acid3
       # branch: master
-      revision: 65f3fc7d8fe03b017a3f3f7da2110d92418b498e
+      revision: 86d9a95c6f705a2374812ef718516a4a4af72f72
     - name: zmk-feature-kscan-diagnostics
     - name: zmk-feature-input-stream
     - name: zmk-module-settings-rpc
